@@ -10,6 +10,7 @@ body {
 	font-family: $font;
 	font-weight: 400;
 	background-color: $bg;
+	color: $light;
 }
 
 a {
@@ -21,9 +22,10 @@ a {
 	align-items: stretch;
 	justify-content: space-between;
 	height: 71px;
-	position: sticky;
+	position: fixed;
+	width: 100%;
 	top: 0;
-	z-index: 3;
+	z-index: 10;
 	&::before {
 		content: '';
 		display: block;
@@ -104,6 +106,7 @@ a {
 	margin: 0 auto;
 	padding-left: 15px;
 	padding-right: 15px;	
+	box-sizing: border-box;
 }
 
 .banner {
@@ -112,20 +115,20 @@ a {
 	background-repeat: no-repeat;
 	background-size: cover;
 	justify-content: space-between;
-	min-height: 861px;
-	margin-top: 54px;
+	margin-top: 135px;
 	border-radius: 55px;
-	color: $light;	
+	padding: 100px 50px;
+	gap: 50px;
+
 	&__main {
-		max-width: 1031px;
-		padding: 100px 0 0 50px;
+		flex-basis: 61%;
 	}
 
 	&__title {
 		font-size: 6.4rem;
-		font-weight: 700;
-		padding-bottom: 20px;
-		line-height: 70px;		
+		font-weight: 700;		
+		line-height: 110%;
+		margin-bottom: 20px;		
 	}
 	
 	&__text {
@@ -133,19 +136,96 @@ a {
 	}
 	
 	&__btn {
-		padding: 54px 423.5px;
+		display: block;
+		padding: 53px;
 		background-color: $accent;
 		color: $light;
 		border-radius: 20px;
 		font-size: 2rem;
-		letter-spacing: 1.2px;
+		letter-spacing: 1px;
+		line-height: 110%;		
+		text-align: center;
 		text-transform: uppercase;
-		text-decoration: none;
+		border: 1px solid $accent;		
+		transition: $tr;
+		@media(hover:hover) {
+			&:hover {
+				background-color: transparent;
+			}
+		}
 	}
 
 	&__info {
-		min-width: 649px; //заглушка для правого блока
-		padding-right: 50px;
+		flex-basis: calc(39% - 50px);
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 151px;
+		border: 1px solid $light;
+		border-right: none;
+		border-radius: 20px 0 0 20px;
+		position: relative;
+		margin-right: 80px;
+		margin-bottom: 19px;
+		cursor: pointer;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 81px;
+			height: 153px;
+			background-image: url(../images/banner-info-decor.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			right: -80px;
+			top: -1px;
+		}
+
+		p {
+			font-weight: 200;
+			font-size: 2.4rem;
+			line-height: 110%;
+			padding-left: 30px;
+		}
+
+		span {
+			display: block;
+			font-weight: 700;
+			font-size: 32px;
+			line-height: 110%;	
+			padding-top: 15px;
+		}
+		
+		&_active {
+			background-color: $accent;
+			border: none;
+			&::after {
+				width: 80px;
+				background-image: url(../images/banner-info-decor-active.svg);
+				top: 0px;
+			}
+			.banner__decor {
+				background-color: $accent;
+				border: 1px solid $accent;
+			}
+		}
+	}
+
+	&__decor {
+		position: absolute;
+		border: 1px solid $light;
+		padding: 8px;
+		border-radius: 10px;
+		top: -1px;
+    right: -80px;
+		z-index: 3;
 	}
 }
 
@@ -153,9 +233,10 @@ a {
 	border-radius: 20px;
 	border: 1px solid $light;
 	padding: 30px 330px 30px 30px;
-	margin-bottom: 190px;
+	margin-bottom: 135px;
 	letter-spacing: 0.05em;
 	position: relative;
+
 	&::after {
 		content: '';
 		position: absolute;
@@ -166,14 +247,17 @@ a {
     left: 714px;
 		background-image: url(../images/areas/electoguitar.png);
 	}
+
 	&__title {
 		font-weight: 400;
 		font-size: 2.4rem;
-		padding-bottom: 30px;
-		text-transform: uppercase;
+		line-height: 110%;
+		letter-spacing: 1.2px;
+		margin-bottom: 30px;
+		text-transform: uppercase;		
 	}
+
 	&__text {
-		width: 669px;
 		font-weight: 400;
 		font-size: 2rem;
 		line-height: 150%;
