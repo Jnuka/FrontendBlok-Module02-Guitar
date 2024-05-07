@@ -26,6 +26,7 @@ a {
 	width: 100%;
 	top: 0;
 	z-index: 10;
+	
 	&::before {
 		content: '';
 		display: block;
@@ -44,6 +45,7 @@ a {
 		padding: 17px 45px 0 45px;
 		border-radius: 10px 0 0 0;
 		position: relative;
+
 		&::before {
 			content: '';
 			display: block;
@@ -56,6 +58,7 @@ a {
 			bottom: -24px;
 			left: 0;
 		}
+
 		&::after {
 			content: '';
 			display: block;
@@ -74,7 +77,8 @@ a {
 		background-color: $accent;
 		padding: 17px 45px 0 45px;
 		border-radius: 0 10px 0 0;
-		position: relative;		
+		position: relative;	
+
 		&::before {
 			content: '';
 			display: block;
@@ -85,6 +89,7 @@ a {
 			left: -67px;
 			top: 0;
 		}
+
 		&::after {
 			content: '';
 			display: block;
@@ -170,12 +175,26 @@ a {
 		position: relative;
 		margin-right: 80px;
 		margin-bottom: 19px;
+		transition: $tr;
 		cursor: pointer;
+
 		&:last-child {
 			margin-bottom: 0;
 		}
+
+		&:hover {
+			background-color: $accent;
+			border-color: $accent;
+			&::after {
+				opacity: 1;
+			}
+			.banner__decor {
+				background-color: $accent;
+				border: 1px solid $accent;
+			}
+		}
 		
-		&::after {
+		&::before {
 			content: '';
 			display: block;
 			position: absolute;
@@ -188,44 +207,50 @@ a {
 			top: -1px;
 		}
 
-		p {
-			font-weight: 200;
-			font-size: 2.4rem;
-			line-height: 110%;
-			padding-left: 30px;
-		}
-
-		span {
+		&::after {
+			content: '';
 			display: block;
-			font-weight: 700;
-			font-size: 32px;
-			line-height: 110%;	
-			padding-top: 15px;
-		}
-		
-		&_active {
-			background-color: $accent;
-			border: none;
-			&::after {
-				width: 80px;
-				background-image: url(../images/banner-info-decor-active.svg);
-				top: 0px;
-			}
-			.banner__decor {
-				background-color: $accent;
-				border: 1px solid $accent;
-			}
-		}
+			position: absolute;
+			width: 81px;
+			height: 153px;
+			background-image: url(../images/banner-info-decor-active.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			right: -80px;
+			top: -1px;
+			transition: $tr;
+			opacity: 0;
+		}		
+	}
+
+	&__text {
+		font-weight: 200;
+		font-size: 2.4rem;
+		line-height: 110%;
+		padding-left: 30px;
+	}
+
+	span {
+		display: block;
+		font-weight: 700;
+		font-size: 3.2rem;
+		padding-top: 15px;
 	}
 
 	&__decor {
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		position: absolute;
 		border: 1px solid $light;
-		padding: 8px;
 		border-radius: 10px;
 		top: -1px;
     right: -80px;
 		z-index: 3;
+		box-sizing: border-box;
+		transition: $tr;
 	}
 }
 
