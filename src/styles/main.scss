@@ -176,6 +176,7 @@ a {
 		margin-right: 80px;
 		margin-bottom: 19px;
 		transition: $tr;
+		z-index: 1;
 		cursor: pointer;
 
 		&:last-child {
@@ -183,44 +184,40 @@ a {
 		}
 
 		&:hover {
-			background-color: $accent;
-			border-color: $accent;
-			&::after {
+			&::before {
+				width: 100%;
+				transform: translate(0, 0) scale(1);
 				opacity: 1;
 			}
+			
 			.banner__decor {
 				background-color: $accent;
 				border: 1px solid $accent;
+				
+				&::after {
+					transform: translate(0, 0) scale(1);
+					opacity: 1;
+				}
 			}
 		}
-		
+
 		&::before {
 			content: '';
 			display: block;
 			position: absolute;
-			width: 81px;
-			height: 153px;
-			background-image: url(../images/banner-info-decor.svg);
-			background-repeat: no-repeat;
-			background-size: contain;
-			right: -80px;
+			width: 100%;
+			height: inherit;
+			border-radius: 20px 0 0 20px;
+			border: 1px solid $accent;
+			background-color: $accent;
 			top: -1px;
+			right: 2px;
+			transition: $tr;
+			transform: translate(50%, 50%) scale(0);
+			z-index: -1;
+			opacity: 0;
 		}
 
-		&::after {
-			content: '';
-			display: block;
-			position: absolute;
-			width: 81px;
-			height: 153px;
-			background-image: url(../images/banner-info-decor-active.svg);
-			background-repeat: no-repeat;
-			background-size: contain;
-			right: -80px;
-			top: -1px;
-			transition: $tr;
-			opacity: 0;
-		}		
 	}
 
 	&__text {
@@ -249,8 +246,37 @@ a {
 		top: -1px;
     right: -80px;
 		z-index: 3;
-		box-sizing: border-box;
+		box-sizing: border-box;		
 		transition: $tr;
+
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 81px;
+			height: 153px;
+			background-image: url(../images/banner-info-decor.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			right: 0;
+			top: -1px;
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 81px;
+			height: 153px;
+			background-image: url(../images/banner-info-decor-active.svg);
+			background-repeat: no-repeat;
+			background-size: contain;
+			right: 0;
+			top: -1px;
+			transition: $tr;
+			transform: translate(-50%, 50%) scale(0);
+			opacity: 0;
+		}		
 	}
 }
 
@@ -260,17 +286,16 @@ a {
 	padding: 30px 330px 30px 30px;
 	margin-bottom: 135px;
 	letter-spacing: 0.05em;
-	position: relative;
+	position: relative;	
 
-	&::after {
-		content: '';
+	&__img {
 		position: absolute;
-		width: 336.8px;
-		height: 273.87px;
-		background-repeat: no-repeat;
 		top: -69px;
     left: 714px;
-		background-image: url(../images/areas/electoguitar.png);
+		transition: $tr ease-in-out;
+		&:hover {
+			transform: rotate(-10deg);
+		}
 	}
 
 	&__title {
