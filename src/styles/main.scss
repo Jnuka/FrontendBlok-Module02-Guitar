@@ -2,6 +2,15 @@
 @import 'var';
 @import 'normalize';
 
+@keyframes move-left {
+	0% {
+		transform: translate(100%, 0);
+	}
+	100% {
+		transform: translate(-170%, 0);
+	}
+}
+
 html {
 	font-size: 10px;
 }
@@ -11,6 +20,7 @@ body {
 	font-weight: 400;
 	background-color: $bg;
 	color: $light;
+	overflow-x: hidden;
 }
 
 a {
@@ -123,10 +133,14 @@ a {
 	margin-top: 135px;
 	border-radius: 55px;
 	padding: 100px 50px;
+	margin-bottom: 150px;
 	gap: 50px;
 
 	&__main {
 		flex-basis: 61%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	&__title {
@@ -153,6 +167,7 @@ a {
 		text-transform: uppercase;
 		border: 1px solid $accent;		
 		transition: $tr;
+
 		@media(hover:hover) {
 			&:hover {
 				background-color: transparent;
@@ -186,7 +201,7 @@ a {
 		&:hover {
 			&::before {
 				width: 100%;
-				transform: translate(0, 0) scale(1);
+				transform: scale(1);
 				opacity: 1;
 			}
 			
@@ -195,7 +210,7 @@ a {
 				border: 1px solid $accent;
 				
 				&::after {
-					transform: translate(0, 0) scale(1);
+					transform: scale(1);
 					opacity: 1;
 				}
 			}
@@ -213,7 +228,8 @@ a {
 			top: -1px;
 			right: 2px;
 			transition: $tr;
-			transform: translate(50%, 50%) scale(0);
+			transform: scale(0);
+			transform-origin: top right;
 			z-index: -1;
 			opacity: 0;
 		}
@@ -274,7 +290,8 @@ a {
 			right: 0;
 			top: -1px;
 			transition: $tr;
-			transform: translate(-50%, 50%) scale(0);
+			transform: scale(0);
+			transform-origin: top left;
 			opacity: 0;
 		}		
 	}
@@ -284,7 +301,6 @@ a {
 	border-radius: 20px;
 	border: 1px solid $light;
 	padding: 30px 330px 30px 30px;
-	margin-bottom: 135px;
 	letter-spacing: 0.05em;
 	position: relative;	
 
@@ -311,5 +327,37 @@ a {
 		font-weight: 400;
 		font-size: 2rem;
 		line-height: 150%;
+	}
+}
+
+.tag {
+	display: flex;
+	gap: 20px;
+	animation: move-left 30s infinite linear alternate;
+	margin-bottom: 500px;
+	
+	&:hover {
+		animation-play-state: paused;
+	}
+	
+	&__text {
+		font-weight: 200;
+		font-size: 2.4rem;
+		line-height: 110%;
+		color: $gray;
+		border: 1px solid $gray;;
+		border-radius: 50px;
+		padding: 10px 20px;
+		// position: relative;
+		// &::after {
+		// 	content: '';
+		// 	position: absolute;
+		// 	width: 16px;
+		// 	height: 16px;
+		// 	border-radius: 50%;
+		// 	background-color: $accent;
+		// 	left: -45px;
+		// 	top: 10px;
+		// }
 	}
 }
