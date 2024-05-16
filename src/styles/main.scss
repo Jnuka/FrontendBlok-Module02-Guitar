@@ -611,10 +611,12 @@ a {
 	padding-top: 150px;
 	padding-bottom: 150px;
 	margin-bottom: 150px;
+	max-width: 1920px;
+	margin: 0 auto;
 
 	&__list {
 		display: grid;
-		grid-template-columns: 435px 435px 435px 435px;
+		grid-template-columns: repeat(4, 1fr);
 		gap: 30px;
 		margin-top: 50px;
 	}
@@ -627,9 +629,115 @@ a {
 		font-weight: 400;
 		font-size: 1.6rem;
 		line-height: 150%;
+		transition: $tr;	
+
+		&:hover {			
+			box-shadow: 0px 0 15px 10px $gray;
+		}
 	}
 
 	&__icon {
-		margin-bottom: 20px;
+		margin-bottom: 20px;	
+	}
+}
+
+.result {
+	margin-top: 150px;
+	margin-bottom: 150px;
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 30px;
+		margin-top: 50px;
+		
+	}
+
+	&__item {
+		background-color: $light;
+		padding: 30px;
+		border-radius: $br-min;
+
+		&:first-child {
+			.result__text {
+				span {
+					width: 55px;
+				}
+			}
+		}
+
+		&:nth-child(5) {
+			padding-top: 45px;
+		}
+
+		&:last-child {
+			.result__text {
+				span {
+					margin-top: 6px;
+				}
+			}
+		}
+
+		&:hover {
+			background-color: $gray;
+			
+
+			.result__text {
+				span {
+					transform: translate(-5%, -5%);
+				}
+			}		
+		}
+
+		&._subgrid {
+			grid-column: 2 / 5;
+			display: grid;
+			grid-template-columns: subgrid;
+		}
+	}
+
+	&__text {
+		color: $dark;
+		font-weight: 400;
+		font-size: 1.6rem;
+		line-height: 150%;
+
+		span {
+			display: block;
+			width: 63px;
+			height: 46px;		
+			border-radius: 10px;
+			font-weight: 600;
+			font-size: 24px;
+			line-height: 110%;
+			padding: 10px;
+			background-color: $accent;
+			color: $light;
+			margin-bottom: 20px;
+			transition: $tr;
+		}
+	}
+
+	&__btn {
+		grid-column: 2 / 5;
+		padding: 53px;
+		background-color: $accent;
+		color: $light;
+		border-radius: $br-min;
+		font-size: 2rem;
+		letter-spacing: 1.3px;
+		line-height: 110%;		
+		text-align: center;
+		text-transform: uppercase;
+		border: 1px solid $accent;		
+		transition: $tr;
+
+
+		@media(hover:hover) {
+			&:hover {
+				color: $accent;
+				background-color: transparent;
+			}
+		}
 	}
 }
