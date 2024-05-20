@@ -141,6 +141,21 @@ a {
 	}
 }
 
+.logo {
+	&._max {
+		svg {
+			width: 400px;
+			height: 31px;			
+		}
+	}
+	&._min {
+		svg {
+			width: 296px;
+			height: 22px;
+		}
+	}
+}
+
 .container {
 	height: 100%;
 	max-width: 1920px;
@@ -204,7 +219,7 @@ a {
 		height: 151px;
 		border: 1px solid $light;
 		border-right: none;
-		border-radius: 20px 0 0 20px;
+		border-radius: $br-min 0 0 $br-min;
 		position: relative;
 		margin-right: 80px;
 		margin-bottom: 19px;
@@ -235,7 +250,7 @@ a {
 			position: absolute;
 			width: 100%;
 			height: inherit;
-			border-radius: 20px 0 0 20px;
+			border-radius: $br-min 0 0 $br-min;
 			border: 1px solid $accent;
 			background-color: $accent;
 			top: -2px;
@@ -683,6 +698,7 @@ a {
 		transition: $tr;
 		&:last-child {
 			border-bottom: 0;
+			margin-bottom: 0;
 		}
 		&:hover {
 			border-radius: 10px;
@@ -711,7 +727,6 @@ a {
 			background-repeat: no-repeat;
 			background-size: contain;
 			position: absolute;
-			left: 0;
 			right: 0;
 			margin: 0 auto;
 			opacity: 0;
@@ -740,7 +755,7 @@ a {
 		&._violin {
 			&::before {
 				width: 568px;
-				height: 599px;
+				height: 524px;
 				background-image: url(../images/areas/violin.png);
 				top: calc(50% - 315px);		
 				left: 173px;
@@ -749,10 +764,107 @@ a {
 		&._bas-guitar {
 			&::before {
 				width: 586px;
-				height: 439px;
+				height: 394px;
 				background-image: url(../images/areas/bas-guitar.png);
 				top: calc(50% - 237px);	
 				left: 198px;
+			}
+		}
+	}
+}
+
+.footer {
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: repeat(2, 1fr);
+	align-self: flex-end;
+	background-color: $dark;
+	border-radius: $br-min;
+	padding: 31px 54px 31px 46px;
+	margin-bottom: 23px;
+	&__text {
+		font-size: 1.6rem;
+		line-height: 150%;
+	}
+	&__link {
+		font-weight: 700;
+		font-size: 1.6rem;
+		line-height: 150%;
+		color: $accent;
+		margin-left: 10px;
+		text-decoration: underline;
+		text-decoration-skip-ink: none;	
+	}
+	&__info {
+		margin-left: 5px;
+    margin-top: 2px;
+	}
+	&_copy {
+		justify-self: end;
+		align-self: flex-end;
+	}
+}
+
+.social {
+	display: flex;
+	justify-self: end;
+	align-items: center;
+	gap: 10px;
+	&__link {
+		display: block;
+		width: 44px;
+		height: 44px;
+		background-color: $light;
+		background-repeat: no-repeat;
+		border-radius: 10px;
+		position: relative;
+		transition: $tr;
+		&:hover{
+			background-color: $accent;
+			&::after { 
+				background-color: $light;
+			}
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			display: block;
+			background-color: $accent;
+			mask: center center / 100% no-repeat;
+			-webkit-mask: center center / 100% no-repeat;
+			transition: $tr;
+		}
+		&._wa {			
+			&::after {
+				width: 28px;				
+				height: 28px;
+				top: calc(50% - 14px);
+				left: calc(50% - 14px);
+				margin-right: -50%;
+				mask-image: url(../images/social/wa.svg);
+				-webkit-mask-image: url(../images/social/wa.svg);
+			}
+		}
+		&._vk {
+			&::after {
+				width: 31px;				
+				height: 18px;
+				top: calc(50% - 9px);
+				left: calc(50% - 15.5px);
+				margin-right: -50%;
+				mask-image: url(../images/social/vk.svg);
+				-webkit-mask-image: url(../images/social/vk.svg);
+			}
+		}
+		&._tg {			
+			&::after {
+				width: 25px;				
+				height: 21px;
+				top: calc(50% - 10.5px);
+				left: calc(50% - 12.5px);
+				margin-right: -50%;
+				mask-image: url(../images/social/tg.svg);
+				-webkit-mask-image: url(../images/social/tg.svg);
 			}
 		}
 	}
