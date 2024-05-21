@@ -66,6 +66,9 @@ a {
 		padding: 17px 45px 0 45px;
 		border-radius: 10px 0 0 0;
 		position: relative;
+		@media (max-width: $r-desk) {
+			padding: 17px 20px 0 20px;
+		}
 		&::before {
 			content: '';
 			display: block;
@@ -94,6 +97,9 @@ a {
 		padding: 17px 45px 0 45px;
 		border-radius: 0 10px 0 0;
 		position: relative;	
+		@media (max-width: $r-desk) {
+			padding: 17px 20px 0 20px;
+		}
 		&::before {
 			content: '';
 			display: block;
@@ -120,24 +126,15 @@ a {
 	&__link {
 		color: $light;
 		font-size: 2rem;
-		position: relative;
+		padding-bottom: 5px;
+		border-bottom: 1px solid $light;
 		transition: $tr;
-		padding-bottom: 10px;
-		&:hover {
-			color: $gray;		
-			&::after {
-				background-color: $gray;
+		@media (hover: hover) {
+			&:hover {
+				color: $gray;	
+				border-bottom: 1px solid $gray;			
 			}
 		}
-		&::after {
-			content: '';
-			position: absolute;
-			width: 100%;
-			height: 1px;
-			background-color: $light;
-			top: 35px;
-			left: 0;
-		}	
 	}
 }
 
@@ -162,6 +159,10 @@ a {
 	margin: 0 auto;
 	padding-left: 45px;
 	padding-right: 45px;	
+	@media (max-width: $r-desk) {
+		padding-left: 20px;
+		padding-right: 20px;	
+	}
 }
 
 .banner {
@@ -229,21 +230,24 @@ a {
 		&:last-child {
 			margin-bottom: 0;
 		}
-		&:hover {
-			&::before {
-				width: 100%;
-				transform: scale(1);
-				opacity: 1;
-			}			
-			.banner__decor {
-				background-color: $accent;
-				border: 1px solid $accent;				
-				&::after {
+		@media (hover: hover) {
+			&:hover {
+				&::before {
+					width: 100%;
 					transform: scale(1);
 					opacity: 1;
+				}			
+				.banner__decor {
+					background-color: $accent;
+					border: 1px solid $accent;				
+					&::after {
+						transform: scale(1);
+						opacity: 1;
+					}
 				}
 			}
 		}
+
 		&::before {
 			content: '';
 			display: block;
@@ -329,8 +333,10 @@ a {
 		top: -69px;
     left: 714px;
 		transition: $tr ease-in-out;
-		&:hover {
-			transform: rotate(-10deg);
+		@media (hover: hover) {
+			&:hover {
+				transform: rotate(-10deg);
+			}
 		}
 	}
 	&__title {
@@ -353,9 +359,11 @@ a {
 	gap: 64px;
 	animation: move-left 30s infinite linear alternate;
 	margin-bottom: 150px;	
-	&:hover {
-		animation-play-state: paused;
-	}	
+	@media (hover: hover) {
+		&:hover {
+			animation-play-state: paused;
+		}
+	}
 	&__text {
 		font-weight: 200;
 		font-size: 2.4rem;
@@ -415,9 +423,11 @@ a {
 		left: inherit;
 		position: inherit;
 		transition: $tr;
-		&:hover {
-			border: 1px solid $accent;
-			background-color: $accent;
+		@media (hover: hover) {
+			&:hover {
+				border: 1px solid $accent;
+				background-color: $accent;
+			}
 		}
 		&::after {
 			content: '';
@@ -457,11 +467,13 @@ a {
 		position: relative;
 		overflow: hidden;
 		transition: $tr;		
-		&:hover {
-			border-color: $accent;
-			.slider-teacher__name,
-			.slider-teacher__grid {
-				opacity: 1;
+		@media (hover: hover) {
+			&:hover {
+				border-color: $accent;
+				.slider-teacher__name,
+				.slider-teacher__grid {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -589,8 +601,10 @@ a {
 		font-size: 1.6rem;
 		line-height: 150%;
 		transition: $tr;	
-		&:hover {			
-			box-shadow: 0px 0 15px 10px $gray;
+		@media (hover: hover) {
+			&:hover {			
+				box-shadow: 0px 0 15px 10px $gray;
+			}
 		}
 	}
 	&__icon {
@@ -621,13 +635,15 @@ a {
 				}
 			}
 		}
-		&:hover {
-			background-color: $gray;			
-			.result__text {
-				span {
-					transform: translate(-5%, -5%);
-				}
-			}		
+		@media (hover: hover) {
+			&:hover {
+				background-color: $gray;			
+				.result__text {
+					span {
+						transform: translate(-5%, -5%);
+					}
+				}		
+			}
 		}
 		&._subgrid {
 			grid-column: 2 / 5;
@@ -700,15 +716,17 @@ a {
 			border-bottom: 0;
 			margin-bottom: 0;
 		}
-		&:hover {
-			border-radius: 10px;
-			background-color: $accent;
-			&::after {
-				transform: rotate(45deg);
-			}
-			&::before {
-				opacity: 1;
-				transform: scale(1);
+		@media (hover: hover) {
+			&:hover {
+				border-radius: 10px;
+				background-color: $accent;
+				&::after {
+					transform: rotate(45deg);
+				}
+				&::before {
+					opacity: 1;
+					transform: scale(1);
+				}
 			}
 		}
 		&::after {
@@ -780,8 +798,8 @@ a {
 	align-self: flex-end;
 	background-color: $dark;
 	border-radius: $br-min;
-	padding: 31px 54px 31px 46px;
-	margin-bottom: 23px;
+	padding: 30px 50px;
+	margin-bottom: 30px;
 	&__text {
 		font-size: 1.6rem;
 		line-height: 150%;
@@ -792,8 +810,13 @@ a {
 		line-height: 150%;
 		color: $accent;
 		margin-left: 10px;
-		text-decoration: underline;
-		text-decoration-skip-ink: none;	
+		box-shadow: 0 4px 0 -3px $accent;
+		transition: $tr;
+		@media (hover: hover) {
+			&:hover {
+				box-shadow: 0 4px 0 -3px transparent;
+			}	
+		}
 	}
 	&__info {
 		margin-left: 5px;
@@ -801,17 +824,19 @@ a {
 	}
 	&_copy {
 		justify-self: end;
-		align-self: flex-end;
+		align-self: end;
 	}
 }
 
 .social {
 	display: flex;
-	justify-self: end;
+	justify-content: flex-end;
 	align-items: center;
 	gap: 10px;
 	&__link {
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 44px;
 		height: 44px;
 		background-color: $light;
@@ -819,10 +844,12 @@ a {
 		border-radius: 10px;
 		position: relative;
 		transition: $tr;
-		&:hover{
-			background-color: $accent;
-			&::after { 
-				background-color: $light;
+		@media (hover: hover) {
+			&:hover{
+				background-color: $accent;
+				&::after { 
+					background-color: $light;
+				}
 			}
 		}
 		&::after {
@@ -838,9 +865,6 @@ a {
 			&::after {
 				width: 28px;				
 				height: 28px;
-				top: calc(50% - 14px);
-				left: calc(50% - 14px);
-				margin-right: -50%;
 				mask-image: url(../images/social/wa.svg);
 				-webkit-mask-image: url(../images/social/wa.svg);
 			}
@@ -849,9 +873,6 @@ a {
 			&::after {
 				width: 31px;				
 				height: 18px;
-				top: calc(50% - 9px);
-				left: calc(50% - 15.5px);
-				margin-right: -50%;
 				mask-image: url(../images/social/vk.svg);
 				-webkit-mask-image: url(../images/social/vk.svg);
 			}
@@ -860,9 +881,6 @@ a {
 			&::after {
 				width: 25px;				
 				height: 21px;
-				top: calc(50% - 10.5px);
-				left: calc(50% - 12.5px);
-				margin-right: -50%;
 				mask-image: url(../images/social/tg.svg);
 				-webkit-mask-image: url(../images/social/tg.svg);
 			}
