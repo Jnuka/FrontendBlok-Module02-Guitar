@@ -45,10 +45,13 @@ a {
 	align-items: stretch;
 	justify-content: space-between;
 	height: 71px;
-	position: fixed;
+	position: sticky;
 	width: 100%;
 	top: 0;
 	z-index: 990;	
+	@media (max-width: $r-tab) {
+		height: 66px;
+	}
 	&::before {
 		content: '';
 		display: block;
@@ -60,6 +63,9 @@ a {
 		top: 0;
 		left: 0;
 		z-index: -1;
+		@media (max-width: $r-tab) {
+			top: -2px;
+		}
 	}	
 	&__logo {
 		background-color: $accent;
@@ -90,6 +96,12 @@ a {
 			position: absolute;
 			right: -67px;
 			top: 0;
+			@media (max-width: $r-tab) {
+				height: 66px;
+				background-size: contain;
+				background-repeat: no-repeat;
+				right: -63px;
+			}
 		}
 	}
 	&__menu {
@@ -100,6 +112,9 @@ a {
 		@media (max-width: $r-desk) {
 			padding: 17px 20px 0 20px;
 		}
+		@media (max-width: $r-tab) {
+			padding: 20px 20px 0 20px;
+		}
 		&::before {
 			content: '';
 			display: block;
@@ -109,6 +124,12 @@ a {
 			position: absolute;
 			left: -67px;
 			top: 0;
+			@media (max-width: $r-tab) {
+				height: 66px;
+				background-size: contain;
+				background-repeat: no-repeat;
+				left: -60px;
+			}
 		}
 		&::after {
 			content: '';
@@ -135,6 +156,9 @@ a {
 				border-bottom: 1px solid $gray;			
 			}
 		}
+		@media (max-width: $r-tab) {
+			font-size: 1.6rem;
+		}
 	}
 }
 
@@ -142,7 +166,10 @@ a {
 	&._max {
 		svg {
 			width: 400px;
-			height: 31px;			
+			height: 31px;	
+			@media (max-width: $r-desk) {
+				width: clamp(300px, 39vw, 400px);
+			}		
 		}
 	}
 	&._min {
@@ -168,6 +195,7 @@ a {
 .banner {
 	display: flex;
 	background-image: url(../images/bg-banner.jpg);
+	// background-color: rgba($color: $accent, $alpha: 0.5);
 	background-repeat: no-repeat;
 	background-size: cover;
 	justify-content: space-between;
@@ -176,20 +204,34 @@ a {
 	padding: 100px 50px;
 	margin-bottom: 150px;
 	gap: 50px;
+	@media(max-width: $r-desk_full) {
+		flex-direction: column;
+		padding: 80px 40px;
+		margin-bottom: 100px;
+	}
+	@media (max-width: $r-tab) {
+		padding: 50px 30px;
+	}
 	&__main {
 		flex-basis: 61%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		@media (max-width: $r-desk_full) {
+			gap: 50px;
+		}
+		@media (max-width: $r-tab) {
+			gap: 30px;
+		}
 	}
 	&__title {
 		font-size: 6.4rem;
 		font-weight: 700;		
 		line-height: 110%;
 		margin-bottom: 20px;		
-	}
-	&__text {
-		font-size: 2rem;
+		@media (max-width: $r-desk_full) {
+			font-size: clamp(5.0rem, 4vw + 1rem, 6.4rem);		
+		}
 	}
 	&__btn {
 		display: block;
@@ -212,6 +254,11 @@ a {
 	}
 	&__info {
 		flex-basis: calc(39% - 50px);
+		@media (max-width: $r-desk_full) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+		}
 	}
 	&__item {
 		display: flex;
@@ -224,9 +271,10 @@ a {
 		position: relative;
 		margin-right: 80px;
 		margin-bottom: 19px;
+		padding: 45px 30px 30px 30px;
 		transition: $tr;
 		z-index: 1;
-		cursor: pointer;
+		cursor: pointer;		
 		&:last-child {
 			margin-bottom: 0;
 		}
@@ -240,14 +288,29 @@ a {
 				.banner__decor {
 					background-color: $accent;
 					border: 1px solid $accent;				
+					@media (max-width: ($r-desk - 24px)) {
+						border: 1px solid $light;	
+					}
 					&::after {
 						transform: scale(1);
 						opacity: 1;
+						@media (max-width: ($r-desk - 24px)) {
+							transform: scale(0);
+						}
 					}
 				}
 			}
 		}
-
+		@media (max-width: $r-desk_full) {
+			margin-bottom: 0;
+			padding: 45px 0 30px 30px;
+		}
+		@media (max-width: ($r-desk - 24px)) {
+			padding: 25px 30px 25px 100px;
+			margin-right: 0;
+			border-radius: $br-min;
+			border-right: 1px solid $light;
+		}
 		&::before {
 			content: '';
 			display: block;
@@ -264,19 +327,30 @@ a {
 			transform-origin: top right;
 			z-index: -1;
 			opacity: 0;
+			@media (max-width: ($r-desk - 24px)) {
+				border-radius: $br-min;
+				transform-origin: center;
+				right: -1px;
+			}
 		}
 	}
 	&__text {
 		font-weight: 200;
 		font-size: 2.4rem;
 		line-height: 110%;
-		padding-left: 30px;
-	}
-	span {
-		display: block;
-		font-weight: 700;
-		font-size: 3.2rem;
-		padding-top: 15px;
+		@media (max-width: ($r-desk - 24px)) {
+			font-size: 1.8rem;
+		}
+		span {
+			display: block;
+			font-weight: 700;
+			font-size: 3.2rem;
+			line-height: 110%;
+			padding-top: 15px;
+			@media (max-width: ($r-desk - 24px)) {
+				font-size: 2.0rem;
+			}
+		}
 	}
 	&__decor {
 		width: 50px;
@@ -291,6 +365,11 @@ a {
     right: -80px;
 		z-index: 3;
 		transition: $tr;
+		@media (max-width: ($r-desk - 24px)) {
+			top: calc(50% - 25px);
+			right: inherit;
+			left: 30px;
+		}
 		&::before {
 			content: '';
 			display: block;
@@ -302,6 +381,9 @@ a {
 			background-size: contain;
 			right: 0;
 			top: -1px;
+			@media (max-width: ($r-desk - 24px)) {
+				display: none;
+			}
 		}
 		&::after {
 			content: '';
@@ -328,16 +410,11 @@ a {
 	padding: 30px 330px 30px 30px;
 	letter-spacing: 0.05em;
 	position: relative;
-	&__img {
-		position: absolute;
-		top: -69px;
-    left: 714px;
-		transition: $tr ease-in-out;
-		@media (hover: hover) {
-			&:hover {
-				transform: rotate(-10deg);
-			}
-		}
+	@media (max-width: $r-desk_full_over) {
+		padding-right: clamp(200px, 20vw, 330px);
+	}
+	@media (max-width: $r-desk_full) {
+		padding-right: 330px;
 	}
 	&__title {
 		font-weight: 400;
@@ -351,6 +428,33 @@ a {
 		font-weight: 400;
 		font-size: 2rem;
 		line-height: 150%;
+		@media (max-width: $r-desk_full) {
+			max-width: 572px;
+		}
+	}
+	&__img {
+		position: absolute;
+		transition: $tr ease-in-out;
+		&._electoguitar {
+			top: -69px;
+			right: -20px;
+			@media (max-width: $r-desk_full_over) {
+				width: clamp(200px, 22vw, 332px);
+				top: inherit;
+				bottom: 45px;
+				right: -35px
+			} 
+		}	
+		@media (max-width: $r-desk_full) {
+			width: auto;
+			top: -69px;
+			bottom: inherit;
+		}
+		@media (hover: hover) {
+			&:hover {
+				transform: rotate(-10deg);
+			}
+		}
 	}
 }
 
@@ -363,6 +467,9 @@ a {
 		&:hover {
 			animation-play-state: paused;
 		}
+	}
+	@media(max-width: $r-desk_full) {
+		margin-bottom: 100px;
 	}
 	&__text {
 		font-weight: 200;
