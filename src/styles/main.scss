@@ -209,8 +209,11 @@ a {
 		padding: 80px 40px;
 		margin-bottom: 100px;
 	}
-	@media (max-width: $r-tab) {
+	@media (max-width: ($r-desk - 24px)) {
 		padding: 50px 30px;
+	}
+	@media(max-width: $r-tab) {
+		margin-bottom: 80px;
 	}
 	&__main {
 		flex-basis: 61%;
@@ -306,7 +309,9 @@ a {
 			padding: 45px 0 30px 30px;
 		}
 		@media (max-width: ($r-desk - 24px)) {
-			padding: 25px 30px 25px 100px;
+			height: inherit;
+			justify-content: center;
+			padding: 25px 10px 25px 100px;
 			margin-right: 0;
 			border-radius: $br-min;
 			border-right: 1px solid $light;
@@ -316,7 +321,7 @@ a {
 			display: block;
 			position: absolute;
 			width: 100%;
-			height: inherit;
+			height: 151px;
 			border-radius: $br-min 0 0 $br-min;
 			border: 1px solid $accent;
 			background-color: $accent;
@@ -328,6 +333,7 @@ a {
 			z-index: -1;
 			opacity: 0;
 			@media (max-width: ($r-desk - 24px)) {
+				height: 108px;
 				border-radius: $br-min;
 				transform-origin: center;
 				right: -1px;
@@ -346,9 +352,10 @@ a {
 			font-weight: 700;
 			font-size: 3.2rem;
 			line-height: 110%;
-			padding-top: 15px;
+			margin-top: 20px;
 			@media (max-width: ($r-desk - 24px)) {
 				font-size: 2.0rem;
+				margin-top: 12px;
 			}
 		}
 	}
@@ -439,10 +446,8 @@ a {
 			top: -69px;
 			right: -20px;
 			@media (max-width: $r-desk_full_over) {
-				width: clamp(200px, 22vw, 332px);
-				top: inherit;
+				width: clamp(250px, 22vw, 332px);
 				bottom: 45px;
-				right: -35px
 			} 
 		}	
 		@media (max-width: $r-desk_full) {
@@ -468,8 +473,11 @@ a {
 			animation-play-state: paused;
 		}
 	}
-	@media(max-width: $r-desk_full) {
+	@media(max-width: $r-desk) {
 		margin-bottom: 100px;
+	}
+	@media(max-width: $r-tab) {
+		margin-bottom: 80px;
 	}
 	&__text {
 		font-weight: 200;
@@ -497,19 +505,38 @@ a {
 .course {
 	display: flex;
 	gap: 70px;
+	@media (max-width: $r-desk_full) {
+		flex-direction: column;
+		gap: 30px;
+	}
 	&__title {
 		flex-basis: 395px;
+		@media (max-width: $r-desk_full) { 
+			flex-basis: auto;
+			display: flex;
+			justify-content: space-between;
+		}
 	}
 	&__control {
 		margin-top: 40px;
+		@media (max-width: $r-desk_full) {
+			margin-top: 0;
+		}
 	}
 	&__content {
 		width: calc(100% - 395px - 70px);
 		flex-basis: calc(100% - 395px - 70px);
+		@media (max-width: $r-desk_full) { 
+			width: 100%;
+			flex-basis: auto;
+		}
 	}	
 	&__schedule {
 		margin-top: 50px;	
 		margin-bottom: 150px;
+		@media (max-width: $r-desk) {
+			margin-bottom: 100px;
+		}
 	}
 }
 
@@ -535,6 +562,10 @@ a {
 				border: 1px solid $accent;
 				background-color: $accent;
 			}
+		}
+		@media (max-width: $r-desk_full) {
+			width: 50px;
+			height: 50px;
 		}
 		&::after {
 			content: '';
@@ -567,7 +598,7 @@ a {
 		transition: $tr;
 	}
 	&__item {
-		height: 707px;
+		height: min(707px, 36vw);
 		background-color: $dark;
 		border-radius: $br-max;
 		border: 1px solid $dark;
@@ -580,27 +611,48 @@ a {
 				.slider-teacher__name,
 				.slider-teacher__grid {
 					opacity: 1;
-				}
+				}	
+				.slider-teacher__grid {
+					@media (max-width: ($r-desk - 24px)) {
+						opacity: 0;
+					}
+				}			
 			}
+		}
+		@media (max-width: $r-desk_full) {
+			height: min(672px, 47vw);
+		}
+		@media (max-width: ($r-desk - 24px)) {
+			border-color: $accent;
 		}
 	}
 	&__img {
 		width: 100%;
-		height: 637px;
+		height: min(637px, 32vw);
 		object-fit: cover;
 		position: absolute;
 		bottom: 0;
+		@media (max-width: $r-desk_full) {
+			height: min(630px, 43vw);
+		}
 	}
 	&__name {
 		width: 100%;
 		position: absolute;
 		font-weight: 400;
-		font-size: 2.4rem;
+		font-size: clamp(1.6rem, 2vw - 0.75rem, 2.4rem);
 		bottom: 30px;
 		left: 30px;	
 		transition: $tr;
 		z-index: 1;
 		opacity: 0;	
+		@media (max-width: $r-desk_full) {
+			text-align: center;
+			left: 0;	
+		}
+		@media (max-width: ($r-desk - 24px)) {
+			opacity: 1;	
+		}
 		&::before {
 			content: '';
 			display: block;
@@ -612,6 +664,12 @@ a {
 			left: -30px;
 			bottom: -30px;
 			z-index: -1;
+			@media (max-width: $r-desk_full) {
+				left: 0;
+			}
+			@media (max-width: ($r-desk - 24px)) {
+				opacity: 0;	
+			}
 		}
 	}
 }
@@ -693,11 +751,25 @@ a {
 	margin-bottom: 150px;
 	max-width: 1920px;
 	margin: 0 auto;
+	@media (max-width: $r-desk) {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	@media (max-width: $r-tab) {
+		padding-top: 80px;
+		padding-bottom: 100px;
+	}
 	&__list {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 30px;
 		margin-top: 50px;
+		@media (max-width: $r-desk_full) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: $r-tab) {
+			gap: 20px;
+		}
 	}
 	&__item {
 		background-color: $light;
@@ -722,6 +794,10 @@ a {
 .result {
 	margin-top: 150px;
 	margin-bottom: 150px;
+	@media (max-width: $r-desk) {
+		margin-top: 100px;
+		margin-bottom: 100px;
+	}
 	&__list {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -804,6 +880,9 @@ a {
 
 .areas {
 	margin-bottom: 150px;
+	@media (max-width: $r-desk) {
+		margin-bottom: 100px;
+	}
 	&__link {
 		display: flex;
 		justify-content: space-between;
@@ -819,10 +898,6 @@ a {
 		margin-bottom: 30px;
 		position: relative;
 		transition: $tr;
-		&:last-child {
-			border-bottom: 0;
-			margin-bottom: 0;
-		}
 		@media (hover: hover) {
 			&:hover {
 				border-radius: 10px;
@@ -835,6 +910,14 @@ a {
 					transform: scale(1);
 				}
 			}
+		}
+		@media (max-width: $r-desk_full_over) {
+			font-size: clamp(2.0rem, 2vw + 0.75rem, 3.2rem);
+		}		
+		
+		&:last-child {
+			border-bottom: 0;
+			margin-bottom: 0;
 		}
 		&::after {
 			content: '';
@@ -865,7 +948,19 @@ a {
 				height: 314px;
 				background-image: url(../images/areas/acoustic.png);
 				top: calc(50% - 170px);
-				left: 275px;				
+				left: 275px;
+				@media (max-width: $r-desk_full_over) {
+					width: clamp(350px, 34vw, 586px);
+					top: calc(50% - 160px);
+					left: 50%;
+				}			
+				@media (max-width: $r-desk_wxga) {
+					top: calc(50% - 130px);
+					left: 55%;
+				}			
+				@media (max-width: ($r-desk - 24px)) {
+					display: none;
+				}				
 			}
 		}
 		&._drums {
@@ -875,6 +970,18 @@ a {
 				background-image: url(../images/areas/drums.png);
 				top: calc(50% - 228px);
 				left: 80px;
+				@media (max-width: $r-desk_full_over) {
+					width: clamp(250px, 28vw, 474px);
+					height: clamp(250px, 28vw, 474px);
+					left: 30%;
+				}			
+				@media (max-width: $r-desk_wxga) {
+					top: calc(50% - 190px);
+					left: 40%;
+				}		
+				@media (max-width: ($r-desk - 24px)) {
+					display: none;
+				}	
 			}
 		}
 		&._violin {
@@ -884,6 +991,18 @@ a {
 				background-image: url(../images/areas/violin.png);
 				top: calc(50% - 315px);		
 				left: 173px;
+				@media (max-width: $r-desk_full_over) {
+					width: clamp(350px, 32vw, 586px);
+					height: clamp(350px, 32vw, 524px);
+					top: calc(50% - 292px);
+					left: 35%;
+				}			
+				@media (max-width: $r-desk_wxga) {
+					top: calc(60% - 240px);
+				}			
+				@media (max-width: ($r-desk - 24px)) {
+					display: none;
+				}	
 			}
 		}
 		&._bas-guitar {
@@ -893,6 +1012,19 @@ a {
 				background-image: url(../images/areas/bas-guitar.png);
 				top: calc(50% - 237px);	
 				left: 198px;
+				@media (max-width: $r-desk_full_over) {
+					width: clamp(350px, 32vw, 586px);
+					height: clamp(300px, 32vw, 394px);
+					top: calc(50% - 200px);
+					left: 35%;
+				}			
+				@media (max-width: $r-desk_wxga) {
+					top: calc(50% - 150px);
+					left: 40%;
+				}						
+				@media (max-width: ($r-desk - 24px)) {
+					display: none;
+				}	
 			}
 		}
 	}
@@ -907,6 +1039,10 @@ a {
 	border-radius: $br-min;
 	padding: 30px 50px;
 	margin-bottom: 30px;
+	@media (max-width: $r-desk_wxga) {
+		grid-template-columns: 1fr 160px;
+		gap: 20px;
+	}
 	&__text {
 		font-size: 1.6rem;
 		line-height: 150%;
@@ -928,10 +1064,17 @@ a {
 	&__info {
 		margin-left: 5px;
     margin-top: 2px;
+		@media (max-width: $r-desk_wxga) {
+			grid-column: 1 / 3;
+		}
 	}
 	&_copy {
 		justify-self: end;
 		align-self: end;
+		@media (max-width: $r-desk_wxga) {			
+			justify-self: start;
+			align-self: start;
+		}
 	}
 }
 
