@@ -589,20 +589,13 @@ a {
 }
 
 .slider-teacher {
-	&__grid {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		opacity: 0;
-		transition: $tr;
-	}
 	&__item {
 		height: min(707px, 36vw);
 		background-color: $dark;
 		border-radius: $br-max;
 		border: 1px solid $dark;
 		position: relative;
+		z-index: 2;
 		overflow: hidden;
 		transition: $tr;		
 		@media (hover: hover) {
@@ -613,7 +606,7 @@ a {
 					opacity: 1;
 				}	
 				.slider-teacher__grid {
-					@media (max-width: ($r-desk - 24px)) {
+					@media (max-width: $r-tab) {
 						opacity: 0;
 					}
 				}			
@@ -622,9 +615,17 @@ a {
 		@media (max-width: $r-desk_full) {
 			height: min(672px, 47vw);
 		}
-		@media (max-width: ($r-desk - 24px)) {
+		@media (max-width: $r-tab) {
 			border-color: $accent;
 		}
+	}
+	&__grid {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		transition: $tr;
 	}
 	&__img {
 		width: 100%;
@@ -650,9 +651,6 @@ a {
 			text-align: center;
 			left: 0;	
 		}
-		@media (max-width: ($r-desk - 24px)) {
-			opacity: 1;	
-		}
 		&::before {
 			content: '';
 			display: block;
@@ -667,8 +665,25 @@ a {
 			@media (max-width: $r-desk_full) {
 				left: 0;
 			}
-			@media (max-width: ($r-desk - 24px)) {
-				opacity: 0;	
+		}
+		&._desktop {
+			@media (max-width: $r-tab) {
+				display: none;
+			}
+		}
+		&._mobile {
+			display: none;
+			font-size: 1.2rem;
+			margin-top: 8px;
+			position: inherit;
+			bottom: inherit;
+			left: inherit;	
+			opacity: 1;
+			@media (max-width: $r-tab) {
+				display: block;
+			}
+			&::before {
+				display: none;
 			}
 		}
 	}
@@ -794,6 +809,40 @@ a {
 .result {
 	margin-top: 150px;
 	margin-bottom: 150px;
+	container-type: inline-size;
+	container-name: result;
+	@container result (max-width: 935px) {
+		.result__list {
+			grid-template-columns: repeat(2, 1fr);
+			padding-bottom: 120px;
+		}
+		.result__item._subgrid {
+			grid-column: inherit;
+			grid-template-columns: 1 / 1;
+		}
+		.result__btn {
+			width: 100%;
+			padding: 40px 30px;
+			grid-column: inherit;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	}
+	@container result (max-width: 600px) {
+		.result__btn {
+			font-size: clamp(1.4rem, 3cqi, 2.0rem);
+		}
+	}
+	@container result (max-width: 450px) {
+		.result__list {
+			grid-template-columns: 1fr;			
+			padding-bottom: 100px;
+		}
+		.result__btn {
+			padding: 19px 50px;
+		}
+	}
 	@media (max-width: $r-desk) {
 		margin-top: 100px;
 		margin-bottom: 100px;
@@ -803,6 +852,10 @@ a {
 		grid-template-columns: repeat(4, 1fr);
 		gap: 30px;
 		margin-top: 50px;		
+		position: relative;
+		@media (max-width: $r-tab) {
+			gap: 20px;
+		}
 	}
 	&__item {
 		background-color: $light;
@@ -827,6 +880,9 @@ a {
 					}
 				}		
 			}
+		}
+		@media (max-width: $r-desk) {
+			padding: clamp(20px, 2.8vw, 30px);
 		}
 		&._subgrid {
 			grid-column: 2 / 5;
@@ -912,7 +968,7 @@ a {
 			}
 		}
 		@media (max-width: $r-desk_full_over) {
-			font-size: clamp(2.0rem, 2vw + 0.75rem, 3.2rem);
+			font-size: clamp(2.0rem, 1.2vw + 0.75rem, 3.2rem);
 		}		
 		
 		&:last-child {
@@ -937,6 +993,7 @@ a {
 			position: absolute;
 			right: 0;
 			margin: 0 auto;
+			left: 37vw;
 			opacity: 0;
 			transform: scale(0);
 			transition: $tr;
@@ -944,20 +1001,11 @@ a {
 		&._acoustic {
 			margin-top: 50px;
 			&::before {
-				width: 568px;
+				width: clamp(200px, 37vw, 568px);
 				height: 314px;
 				background-image: url(../images/areas/acoustic.png);
-				top: calc(50% - 170px);
-				left: 275px;
-				@media (max-width: $r-desk_full_over) {
-					width: clamp(350px, 34vw, 586px);
-					top: calc(50% - 160px);
-					left: 50%;
-				}			
-				@media (max-width: $r-desk_wxga) {
-					top: calc(50% - 130px);
-					left: 55%;
-				}			
+				background-position: center;
+				top: calc(50% - 157px);
 				@media (max-width: ($r-desk - 24px)) {
 					display: none;
 				}				
@@ -965,20 +1013,11 @@ a {
 		}
 		&._drums {
 			&::before {
-				width: 474px;
+				width: clamp(200px, 27vw, 474px);
 				height: 474px;
 				background-image: url(../images/areas/drums.png);
+				background-position: center;
 				top: calc(50% - 228px);
-				left: 80px;
-				@media (max-width: $r-desk_full_over) {
-					width: clamp(250px, 28vw, 474px);
-					height: clamp(250px, 28vw, 474px);
-					left: 30%;
-				}			
-				@media (max-width: $r-desk_wxga) {
-					top: calc(50% - 190px);
-					left: 40%;
-				}		
 				@media (max-width: ($r-desk - 24px)) {
 					display: none;
 				}	
@@ -986,20 +1025,11 @@ a {
 		}
 		&._violin {
 			&::before {
-				width: 568px;
+				width: clamp(200px, 29vw, 568px);
 				height: 524px;
 				background-image: url(../images/areas/violin.png);
+				background-position: center;
 				top: calc(50% - 315px);		
-				left: 173px;
-				@media (max-width: $r-desk_full_over) {
-					width: clamp(350px, 32vw, 586px);
-					height: clamp(350px, 32vw, 524px);
-					top: calc(50% - 292px);
-					left: 35%;
-				}			
-				@media (max-width: $r-desk_wxga) {
-					top: calc(60% - 240px);
-				}			
 				@media (max-width: ($r-desk - 24px)) {
 					display: none;
 				}	
@@ -1007,21 +1037,11 @@ a {
 		}
 		&._bas-guitar {
 			&::before {
-				width: 586px;
+				width: clamp(200px, 32vw, 586px);
 				height: 394px;
 				background-image: url(../images/areas/bas-guitar.png);
+				background-position: center;
 				top: calc(50% - 237px);	
-				left: 198px;
-				@media (max-width: $r-desk_full_over) {
-					width: clamp(350px, 32vw, 586px);
-					height: clamp(300px, 32vw, 394px);
-					top: calc(50% - 200px);
-					left: 35%;
-				}			
-				@media (max-width: $r-desk_wxga) {
-					top: calc(50% - 150px);
-					left: 40%;
-				}						
 				@media (max-width: ($r-desk - 24px)) {
 					display: none;
 				}	
