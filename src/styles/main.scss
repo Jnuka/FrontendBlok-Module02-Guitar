@@ -10,7 +10,7 @@
 		transform: translate(-150%, 0);
 	}
 }
-
+т
 * {
   box-sizing: border-box;
 }
@@ -324,14 +324,14 @@ a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		height: 151px;
+		height: 149px;
 		border: 1px solid $light;
 		border-right: none;
 		border-radius: $br-min 0 0 $br-min;
 		position: relative;
 		margin-right: 80px;
 		margin-bottom: 19px;
-		padding: 45px 30px 30px 30px;
+		padding-left: 30px;
 		transition: $tr;
 		z-index: 1;
 		cursor: pointer;		
@@ -363,7 +363,6 @@ a {
 		}
 		@media (max-width: $r-desk_full) {
 			margin-bottom: 0;
-			padding: 45px 0 30px 30px;
 		}
 		@media (max-width: ($r-desk - 24px)) {
 			height: inherit;
